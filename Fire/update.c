@@ -12,7 +12,7 @@
 
 void update_map(int** map, int** new_map, dimension dim, double prob_to_tree, double prob_lightning, num_tracker* tracker){ 
 	//check the state of each site after one time step
-	if(prob_lightning==0.0){
+	if(prob_lightning==0.0){ //simulate the first situation
 		for(int i=0;i<dim.width;i++){
 			for(int j=0;j<dim.height;j++){
 				switch(map[i][j]){

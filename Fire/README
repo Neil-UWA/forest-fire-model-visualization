@@ -1,0 +1,6 @@
+To compile it, type 'make' in the terminal
+To clean it, type 'make clean' in the terminal
+
+To get reproduceable results, just comment the srand()function in the 'fire.c'. 
+
+To control the simulation speed, just uncomment the usleep() function in the 'simulate.c'

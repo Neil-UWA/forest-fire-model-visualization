@@ -40,14 +40,14 @@ typedef struct{
  }num_tracker;
 
 /*
-	 all the possible states of a site.
-	 a site can be empty, occupied by a green tree or a burning tree.
-	 ash (i.e. empty site) is used to track the trajectory of the fire in percolation simulation. 
+	 State ={empty, tree, burning}
+
+	 Ash (i.e. empty site) is used to track the trajectory of the fire in percolation simulation. 
  */
 enum {empty = 0, tree = 1, burning = 2, ash = 3};
 
 /*
-	 a function to simulate probability, if successful, return true
+	 a function to simulate probability
  */
 bool prob(double x);
 
@@ -59,8 +59,7 @@ void init_map(int** map, int** new_map, dimension dim, double probability,num_tr
 
 /*
 	 update the state of each site with the probability of prob_to_tree and 
-	 prob_lightning, also track the number of growing trees and burnt trees 
-	 in one time step
+	 prob_lightning, also track the statistics of the forest  
  */
 void update_map(int** map, int** new_map, dimension dim, double prob_to_tree, double prob_lightning, num_tracker* tracker); 
 
