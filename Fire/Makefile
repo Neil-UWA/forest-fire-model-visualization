@@ -1,32 +1,23 @@
 # Makefile for CA Model-- Forest fire model
 # To build program, just type 'make' in terminal
-# To clean, type 'make clean'
+# To clean it, type 'make clean'
 
-CC		=			gcc
-TAG		=			-std=c99 -o
-TAGC	=			-std=c99 -c
-OBJ		=			fire.o init.o prob.o update.o plot.o simulate.o 
+CC		=	gcc
+CFLAGS	=	-std=c99 -Wall -Werror -pednatic 
 
-build:	$(OBJ)
-	$(CC) $(OBJ) $(TAG) fire
+RM		=	rm -rf
 
-fire.o: fire.c fire.h 
-	$(CC) fire.c fire.h $(TAGC) 
+OBJ		=	fire.o init.o prob.o update.o plot.o simulate.o 
+HRDS	=	fire.h
+NAME	=	fire
 
-init.o: init.c fire.h
-	$(CC) init.c fire.h $(TAGC)
 
-prob.o: prob.c fire.h
-	$(CC) prob.c fire.h $(TAGC)
+it: $(OBJ)
+	$(CC) -o $(NAME) $(OBJ) $(CFLAGS)
 
-update.o: update.c fire.h
-	$(CC) update.c fire.h $(TAGC)
-
-plot.o: plot.c fire.h
-	$(CC) plot.c fire.h $(TAGC)
-
-simulate.o: simulate.c fire.h
-	$(CC) simulate.c fire.h $(TAGC)
+%.o: %.c $(HRDS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:	
-	rm *.o  fire.h.gch fire
+	$(RM) *.o  $(NAME)
+.PHONY: clean
